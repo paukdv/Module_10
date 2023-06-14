@@ -11,26 +11,28 @@ class Field:
 Клас 'Name', має обовʼязкове поле з імʼям
 """
 class Name(Field):
-    def __init__(self, value):
-        super().__init__(value)
+    pass
 
 """
 Клас 'Phone', необовʼязкове поле з телефоном та таких один запис (Record) може містити декілька
 """
 class Phone(Field):
-    def __init__(self, value):
-        super().__init__(value)
+    pass
+
+class Birthday(Field):
+    pass      
 
 """
 Клас 'Record' відповідає за логіку додавання, видалення, редагування необовʼязкових полів
 та зберігання обовʼязкового поля 'Name' . Має необовʼязкові поля 'phone', 'birthday'
 """
 class Record:
-    def __init__(self, name, phone=None, birthday=None ):
-        self.name = Name(name)
-        self.phone = phone
+    def __init__(self, name, phone=None, birthday=None):
+        self.name = name
         self.birthday = birthday
-        self.phones = []
+        if phone:
+            self.phones = []
+            self.phones.append(phone)
 
     def add_phone(self, phone):
         self.phones.append(Phone(phone))
